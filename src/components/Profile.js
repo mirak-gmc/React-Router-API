@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Container, Row, Jumbotron, CardText } from "reactstrap";
+import { Spinner, Container, Row, Jumbotron } from "reactstrap";
 import axios from "axios";
 
 const Profile = (props) => {
@@ -25,7 +25,7 @@ const Profile = (props) => {
     };
     setIsLoading(true);
     fetchUser();
-  }, []);
+  }, [props.match.params.userId]);
   // if the component still loading
   if (isLoading) {
     return (
@@ -47,30 +47,30 @@ const Profile = (props) => {
     return (
       <Container>
         <Jumbotron>
-          <Row>
-            <CardText
+          <Row className="d-flex justify-content-center align-items-center">
+            <p
               style={{
                 width: "100px",
                 height: "100px",
-                fontSize: "1.5em",
+                fontSize: "1.5em"
               }}
               className="d-flex justify-content-center align-items-center mr-auto border rounded-circle text-light bg-info text-md"
             >
               {/* check if the user and the user.name  is truthy  */}
               {user && user.name && user.name[0]}
-            </CardText>
+            </p>
             {/* check if the user and the user.name  is truthy  */}
 
-            <h1 className="display-3">{user && user.name}</h1>
+            <h1 className="display-3 col">{user && user.name}</h1>
             {/* check if the user and the user.name  is truthy  */}
 
-            <p className="lead text-center">
+            <p className="lead text-center col">
               {/* check if the user and the user.address  is truthy   */}
               {/* access to the nested object element  with es11 style user?.address?.street   => value of street */}
 
-              {`${user && user.address && user.address.street} ${
-                user && user.address && user.address.suite
-              }  ${user && user.adress && user.address.city}`}
+              {user &&
+                user.address &&
+                `${user.address.street} , ${user.address.suite} , ${user.address.city}`}
             </p>
           </Row>
         </Jumbotron>
