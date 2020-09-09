@@ -1,16 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, NavbarBrand } from "reactstrap";
+import { Navbar } from "reactstrap";
 
 const AppNavBar = () => {
   return (
     <Navbar className="bg-dark ">
-      <NavbarBrand className="mr-auto  display-4">
-        <Link className="text-white" to="/">
-          {" "}
-          Users Profiles
-        </Link>
-      </NavbarBrand>
+      <Link className="text-white mr-auto  display-4" to="/">
+        {" "}
+        Users Profiles
+      </Link>
     </Navbar>
   );
 };
